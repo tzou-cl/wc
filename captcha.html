@@ -41,6 +41,7 @@
          .image-select-footer {
              background-color: #2fb7ec;
              color: white;
+             padding: 5px;
          }
 
          .image-select-header > h1 {
@@ -97,11 +98,27 @@
          }
 
          .image-select-footer {
-             height: 70px;
+             height: 80px;
+             position: relative;
          }
 
          .image-select-footer > div {
              float: left;
+             margin-top: -15px;
+         }
+
+         .image-select-footer > button {
+             position: absolute;
+             left: 40%;
+             bottom: 10px;
+             color: white;
+             background-color: #ea9c51;
+             border: 0;
+         }
+
+         .image-select-footer > button:hover {
+             background-color: #faac61;
+             color: white;
          }
 
          .image-select-text {
@@ -110,6 +127,12 @@
          }
 
          .image-select-logo {
+             width: 85px;
+         }
+
+         .image-select-logo img {
+             width: 100%;
+             height: 100%;
          }
 
          .w-captcha {
@@ -134,26 +157,29 @@
                         <div>
                             See these products and more on
                         </div>
-                        <button type="button">Verify</button>
                     </div>
                 </div>
                 <div class="image-select-logo inline-block vcenter-container">
                     <div class="vcenter">
-                        <a href="http://www.wish.com" title="wish"><img src="http://placehold.it/85x30"></a>
+                        <a href="http://www.wish.com" title="wish"><img src="https://d2qihddyw0bsc3.cloudfront.net/5b68b6035091/img/logo/wish_logo_header.png?v=13"></a>
                     </div>
                 </div>
+                <button type="button" onclick="verify();">Verify</button>
             </div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script type="text/javascript">
          things = [
-             {"url":"http://placehold.it/1024x150","tags":["pants","watches"]},
-             {"url":"http://placehold.it/1024x150","tags":["pants","b"]},
-             {"url":"http://placehold.it/1024x150","tags":["pants","dresses"]},
-             {"url":"http://placehold.it/1024x150","tags":["dresses","b"]},
-             {"url":"http://placehold.it/1024x150","tags":["dresses","b"]},
-             {"url":"http://placehold.it/1024x150","tags":["watches"]},
-         ]
+             {"url":"https://contestimg.wish.com/api/image/fetch?contest_id=55bc37c9e6aa324668ad04f5","tags":["pants","watches"]},
+             {"url":"https://contestimg.wish.com/api/image/fetch?contest_id=57d60d6f72c7e94ddb6be42a","tags":["pants","b"]},
+             {"url":"https://contestimg.wish.com/api/image/fetch?contest_id=57d57393fd48914e4b42d9ba","tags":["pants","dresses"]},
+             {"url":"https://contestimg.wish.com/api/image/fetch?contest_id=53cd156dd9113922389632f7","tags":["dresses","b"]},
+             {"url":"https://contestimg.wish.com/api/image/fetch?contest_id=53c9219446188e576e8ac8e1","tags":["dresses","b"]},
+             {"url":"https://contestimg.wish.com/api/image/fetch?contest_id=53c0fa6846188e6f059b6bf0","tags":["watches"]},
+             {"url":"https://contestimg.wish.com/api/image/fetch?contest_id=545793de53a6db0e94eee251","tags":["dresses","b"]},
+             {"url":"https://contestimg.wish.com/api/image/fetch?contest_id=54eec83b785109022aa51b8e","tags":["dresses","b"]},
+             {"url":"https://contestimg.wish.com/api/image/fetch?contest_id=54003de6ecdd3054b195a693","tags":["watches"]},
+            ];
 
          tags = new Set();
 
@@ -185,6 +211,10 @@
              imgs[i].addEventListener("click", function() {
                  this.classList.toggle('selected');
              });
+         }
+
+         function verify() {
+             //the quick brown fox jumps over the lazy dog
          }
         </script>
     </body>
