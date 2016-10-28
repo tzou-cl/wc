@@ -1,0 +1,191 @@
+
+<!doctype html>
+<html>
+    <head>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <style>
+         body {
+             font-family: "helvetica neue", arial, verdana, sans-serif;
+             font-size: 15px;
+         }
+
+         .clearfix::after {
+             visibility: hidden;
+             display: block;
+             font-size: 0;
+             content: ' ';
+             clear: both;
+             height: 0;
+         }
+
+         .inline-block {
+             height: 100%;
+             display: inline-block;
+         }
+
+         .vcenter-container {
+             display: table;
+         }
+
+         .vcenter {
+             display: table-cell;
+             vertical-align: middle;
+         }
+
+         .image-select {
+             width: 300px;
+             margin: 0;
+         }
+
+         .image-select-header,
+         .image-select-footer {
+             background-color: #2fb7ec;
+             color: white;
+         }
+
+         .image-select-header > h1 {
+             margin: 0;
+         }
+
+         .image-select-container {
+         }
+
+         .image-select-row {
+             clear: both;
+         }
+
+         .image-select-image {
+             position: relative;
+             box-sizing: border-box;
+             width: 96px;
+             height: 100px;
+             float: left;
+             overflow: hidden;
+             margin: 2px;
+         }
+
+         .image-select-image::before {
+             position: absolute;
+             bottom: 0;
+             right: 0;
+             content: '$34';
+             background-color: #ea9c51;
+             color: white;
+             padding: 2px;
+         }
+
+         .image-select-image:hover {
+             box-sizing: content-box;
+             border: 2px solid #ea9e48;
+             margin: 0px;
+         }
+
+         .image-select-image.selected::after {
+             position: absolute;
+             bottom: 5px;
+             left: 5px;
+             font-family: FontAwesome;
+             font-size: 25px;
+             content: "\f058";
+             color: #2fb7ec;
+         }
+
+         .image-select-image > img {
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+         }
+
+         .image-select-footer {
+             height: 70px;
+         }
+
+         .image-select-footer > div {
+             float: left;
+         }
+
+         .image-select-text {
+             width: 200px;
+             font-size: 12px;
+         }
+
+         .image-select-logo {
+         }
+
+         .w-captcha {
+             width: 304px;
+             height: 78px;
+             background-color: lightgray;
+         }
+        </style>
+    </head>
+    <body>
+        <div class="image-select">
+            <div class="image-select-header">
+                <h1 id="image-select-title">
+                    Select all products that are X
+                </h1>
+            </div>
+            <div class="image-select-container clearfix">
+            </div>
+            <div class="image-select-footer">
+                <div class="image-select-text inline-block vcenter-container">
+                    <div class="vcenter">
+                        <div>
+                            See these products and more on
+                        </div>
+                        <button type="button">Verify</button>
+                    </div>
+                </div>
+                <div class="image-select-logo inline-block vcenter-container">
+                    <div class="vcenter">
+                        <a href="http://www.wish.com" title="wish"><img src="http://placehold.it/85x30"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script type="text/javascript">
+         things = [
+             {"url":"http://placehold.it/1024x150","tags":["pants","watches"]},
+             {"url":"http://placehold.it/1024x150","tags":["pants","b"]},
+             {"url":"http://placehold.it/1024x150","tags":["pants","dresses"]},
+             {"url":"http://placehold.it/1024x150","tags":["dresses","b"]},
+             {"url":"http://placehold.it/1024x150","tags":["dresses","b"]},
+             {"url":"http://placehold.it/1024x150","tags":["watches"]},
+         ]
+
+         tags = new Set();
+
+         var idk = document.getElementsByClassName("image-select-container")[0];
+         for (var i = 0; i < things.length;) {
+             var r = document.createElement("div");
+             r.classList.add("image-select-row");
+             for (var j = 0; j < 3; ++j) {
+                 var c = document.createElement("div");
+                 c.classList.add("image-select-image");
+                 var im = document.createElement("img");
+                 im.setAttribute("src", things[i + j].url);
+                 c.appendChild(im);
+                 r.appendChild(c);
+                 things[i + j].tags.forEach(tags.add.bind(tags));
+             }
+             idk.appendChild(r);
+             i += 3;
+         }
+
+         // Randomly select a tag to test.
+         tags = Array.from(tags);
+         randomTagId = Math.floor(Math.random() * tags.length);
+         selectTag = tags[randomTagId];
+         document.getElementById('image-select-title').innerHTML = "Select all products that are " + selectTag;
+
+         imgs = $('.image-select-image').get();
+         for (var i = 0; i < imgs.length; ++i) {
+             imgs[i].addEventListener("click", function() {
+                 this.classList.toggle('selected');
+             });
+         }
+        </script>
+    </body>
+</html>
