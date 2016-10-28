@@ -81,7 +81,7 @@
              margin: 0px;
          }
 
-         .image-select-image.selected {
+         .image-select-image.selected > img {
              opacity: 0.5;
          }
 
@@ -93,7 +93,8 @@
              font-size: 25px;
              content: "\f058";
              color: #2fb7ec;
-             opacity: 1.0;
+             background-color: white;
+             border-radius: 9001px;
          }
 
          .image-select-image > img {
@@ -138,6 +139,7 @@
          .image-select-logo img {
              width: 100%;
              height: 100%;
+             object-fit: scale-down;
          }
 
          .w-captcha {
@@ -145,6 +147,7 @@
              height: 78px;
              background-color: lightgray;
          }
+
         </style>
     </head>
     <body>
