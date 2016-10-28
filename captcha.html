@@ -73,6 +73,7 @@
              background-color: #ea9c51;
              color: white;
              padding: 2px;
+             z-index: 1;
          }
 
          .image-select-image:hover {
@@ -95,6 +96,8 @@
              color: #2fb7ec;
              background-color: white;
              border-radius: 9001px;
+             height: 20px;
+             line-height: 21px;
          }
 
          .image-select-image > img {
@@ -120,6 +123,7 @@
              color: white;
              background-color: #ea9c51;
              border: 0;
+             padding: 5px;
          }
 
          .image-select-footer > button:hover {
@@ -169,7 +173,7 @@
                 </div>
                 <div class="image-select-logo inline-block vcenter-container">
                     <div class="vcenter">
-                        <a href="http://www.wish.com" title="wish"><img src="https://d2qihddyw0bsc3.cloudfront.net/5b68b6035091/img/logo/wish_logo_header.png?v=13"></a>
+                        <a target="_blank" href="http://www.wish.com" title="wish"><img src="https://d2qihddyw0bsc3.cloudfront.net/5b68b6035091/img/logo/wish_logo_header.png?v=13"></a>
                     </div>
                 </div>
                 <button type="button" onclick="verify();">Verify</button>
@@ -188,6 +192,16 @@
              {"url":"https://contestimg.wish.com/api/image/fetch?contest_id=54eec83b785109022aa51b8e","tags":["dresses","b"]},
              {"url":"https://contestimg.wish.com/api/image/fetch?contest_id=54003de6ecdd3054b195a693","tags":["watches"]},
             ];
+
+         function shuffle(a) {
+             var j, x, i;
+             for (i = a.length; i; i--) {
+                 j = Math.floor(Math.random() * i);
+                 x = a[i - 1];
+                 a[i - 1] = a[j];
+                 a[j] = x;
+             }
+         }
 
          tags = new Set();
 
